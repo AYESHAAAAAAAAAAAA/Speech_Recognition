@@ -1,24 +1,17 @@
-pip install SpeechRecognition
-pip install pyttsx3
-pip install pyaudio
-import speech_recognition
-import pyttsx3
+Title: Speech Recognition System
 
-recognizer = speech_recognition.Recognizer() 
+This project develops a speech recognition system using deep learning techniques. The system recognizes spoken words and transcribes them into text.
 
-while True: 
-    try:
-        with speech_recognition.Microphone() as source: 
-            print("listening...........")
-            recognizer.adjust_for_ambient_noise(source, duration=0.2) 
-            audio = recognizer.listen(source) 
-            text = recognizer.recognize_google(audio) 
-            text = text.lower() 
-            print(f"Recognized {text}") 
-            
-            if "close" in text:
-                print("Closing the program.")
-                break  # Exit the loop and terminate the program
-    except speech_recognition.UnknownValueError:
-        recognizer = speech_recognition.Recognizer() 
-        continue
+Technologies Used:
+
+- Programming Language: Python
+- Libraries: TensorFlow, Keras, NumPy, and SciPy
+- Framework: Deep Learning
+- Dataset: LibriSpeech (1000 hours of audio)
+
+Approach:
+
+1. Data Preprocessing: Audio files are converted to spectrograms and normalized.
+2. Model Development: Convolutional Neural Networks (CNNs) and Recurrent Neural Networks (RNNs) are used for feature extraction and speech recognition.
+3. Training: The model is trained on the LibriSpeech dataset with a batch size of 32 and 100 epochs.
+4. Evaluation: The model is evaluated on a test set with metrics like Word Error Rate (WER) and Character Error Rate (CER).
